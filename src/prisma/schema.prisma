@@ -11,6 +11,8 @@ model User {
   id          String         @id @default(uuid())
   name        String
   email       String         @unique
+  isEmailVerified  Boolean   @default(false)
+  roles       String[]       @default(["user"])
   password    String
   registrations Registration[]
   createdAt   DateTime       @default(now())

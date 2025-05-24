@@ -21,6 +21,9 @@
     "express-rate-limit": "^7.5.0",
     "helmet": "^8.1.0",
     "http-status-codes": "^2.3.0",
+    "joi": "^17.13.3",
+    "joi-password": "^4.2.0",
+    "joi-phone-number": "^5.1.1",
     "jsonwebtoken": "^9.0.2",
     "morgan": "^1.10.0"
   },
@@ -29,6 +32,7 @@
     "@types/colors": "^1.2.4",
     "@types/cors": "^2.8.18",
     "@types/express": "^5.0.2",
+    "@types/joi-phone-number": "^5.0.8",
     "@types/jsonwebtoken": "^9.0.9",
     "@types/node": "^22.15.21",
     "nodemon": "^3.1.10",
