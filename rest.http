@@ -13,12 +13,12 @@ Content-Type: application/json
 }
 
 #### CREATE A NEW User
-POST http://localhost:5000/api/v1/auth/register
+POST http://localhost:4000/api/v1/auth/register
 Content-Type: application/json
 
 {
-  "name": "Amodu monica",
-  "email": "ayomidesheif2019@gmail.com",
+  "name": "Amodu moller",
+  "email": "ayomidesherif2019@gmail.com",
   "password": "Test123#@"
 }
 

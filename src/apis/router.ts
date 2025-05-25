@@ -1,5 +1,5 @@
 import { Router } from "express";
-// import { StatusCodes as status } from "http-status-codes";
+import { StatusCodes as status } from "http-status-codes";
 import authenticationRoutes from "../services/auth/routes/index";
 
 const router = Router();
@@ -11,11 +11,11 @@ export default () => {
   authenticationRoutes(router);
 
   /** Catch all route handler */
-  // router.use((_, res) => {
-  //   return res.status(status.NOT_FOUND).send({
-  //     message: "The requested route does not exist, please try again.",
-  //   });
-  // });
+  router.use((_, res) => {
+    res.status(status.NOT_FOUND).send({
+      message: "The requested route does not exist, please try again.",
+    });
+  });
 
   return router;
 };

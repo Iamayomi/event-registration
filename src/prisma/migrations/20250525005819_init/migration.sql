@@ -3,6 +3,8 @@ CREATE TABLE "User" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "email" TEXT NOT NULL,
+    "isEmailVerified" BOOLEAN NOT NULL DEFAULT false,
+    "role" TEXT NOT NULL DEFAULT 'user',
     "password" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,

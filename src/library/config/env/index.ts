@@ -3,6 +3,10 @@ export const customEnvs = {
 
   port: process.env.PORT as string,
 
+  googleAuthUser: process.env?.GOOGLE_AUTH_USER as string,
+
+  googleAuthPassword: process.env?.GOOGLE_AUTH_PASSWORD as string,
+
   // mongo_url: process.env.DATABASE as string,
   jwtSecret: process.env.JWT_SECRET as string,
 
