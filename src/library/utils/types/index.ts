@@ -10,31 +10,21 @@ export interface CustomRequest extends Request {
     email?: string;
   };
   body: {
-    name?: string;
-    email?: string;
-    password?: string;
+    name: string;
+    email: string;
+    password: string;
+    isEmailVerified?: boolean;
     title?: string;
     desc?: string;
-    date?: string;
-    capacity?: number;
-    eventId?: string;
+    verification_code: string;
+    date: string;
+    capacity: number;
+    eventId: string;
   };
   params: {
-    eventId?: string;
-    userId?: string;
+    eventId: string;
+    userId: string;
   };
-}
-
-export interface JwtUserPayload {
-  id: string | number;
-  email: string;
-  role: string;
-}
-
-export interface JwtEmailPayload {
-  code: string;
-  name: string;
-  user: JwtUserPayload;
 }
 
 // mail options

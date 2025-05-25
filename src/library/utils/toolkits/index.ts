@@ -1,10 +1,11 @@
 import jwt from "jsonwebtoken";
+import bcrypt from "bcryptjs";
+import ShortUniqueId from "short-unique-id";
 
 import { blue, yellow, red, magenta, green } from "colors";
 
-import { CustomRequest, Days, Hours, JwtEmailPayload, JwtUserPayload, LogStatus, Minutes, TimeInMilliseconds } from "../types";
+import { CustomRequest, Days, Hours, LogStatus, Minutes, TimeInMilliseconds } from "../types";
 import { TIME_IN, customEnvs, sendError } from "../../../library";
-import ShortUniqueId from "short-unique-id";
 
 export const colorStatus = (status: LogStatus): string => {
   switch (status) {
@@ -161,7 +162,8 @@ export const createAccessToken = function (user: any, expiresAt: number = TIME_I
  * @param exp - Optional expiration time for the token (currently unused)
  * @returns An object with the code, user info, and the JWT token
  */
-export const createEmailVerificationToken = function (user: any, length?: number, exp?: number) {
+
+export const createVericationToken = function (user: any, length?: number, exp?: number) {
   const { code } = getRandomNumbers(length);
 
   const data = {
@@ -172,7 +174,11 @@ export const createEmailVerificationToken = function (user: any, length?: number
     role: user.role,
   };
 
-  const token = createAccessToken(data, TIME_IN.hours[1]);
+  const token = jwt.sign(data, customEnvs.jwtSecret, { expiresIn: `${exp || TIME_IN.hours[1]}` });
 
   return { ...data, token };
+};
+
+export const verifyPassword = async function (user: any, password: string) {
+  return await bcrypt.compare(password, user.password);
 };

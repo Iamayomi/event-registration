@@ -3,13 +3,22 @@
 GET http://localhost:8080/api/v1/users/profile
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5vdEBnbWFpbC5jb20iLCJ1c2VySWQiOjEsImlhdCI6MTczNTM4NzQ4MSwiZXhwIjoxNzM1NDczODgxfQ.6SlVtKAGykfS-zTqfYsOh2MdoV5wzalaNHbBNx1p38c
 
+#### SEND REQUEST TO GETS A PROFILE
+POST http://localhost:4000/api/v1/auth/verify-email
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb2RlIjo1Mjc5MzYsImlkIjoiZWRiNDNlMTMtYjE1OS00Y2FlLTk0ZDYtMDRlYTA3YTg3NTU0IiwibmFtZSI6IkFtb2R1IG1vbGxlciIsImVtYWlsIjoiYXlvbWlkZXNoZXJpZjIwMTlAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3NDgyMDAxNTksImV4cCI6MTc0ODIwMzc1OX0.JBo93sau4xZik3GFKoy__6axtG228iQKD0VH4jSxfIo
+Content-Type: application/json
+
+{
+  "verification_code": "581195"
+}
+
 #### LOGIN A USER
-POST  http://localhost:5000/api/v1/auth/login
+POST http://localhost:4000/api/v1/auth/login
 Content-Type: application/json
 
 {
   "email": "ayomidesherif2019@gmail.com",
-  "password": "Testing26377#!@"
+  "password": "Test123#@"
 }
 
 #### CREATE A NEW User
