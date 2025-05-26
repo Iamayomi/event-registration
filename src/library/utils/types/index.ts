@@ -1,9 +1,14 @@
+import { Prisma } from "@prisma/client";
 import { Request } from "express";
 
 export type ErrorData = Record<string, any>;
 
 export type LogStatus = "INFO" | "WARN" | "ERROR" | "SUCCESS" | "DEBUG";
 
+// export enum UserRoles {
+//   USER = "user",
+//   ADMIN = "admin",
+// }
 export interface CustomRequest extends Request {
   user?: {
     userId: string;
@@ -14,17 +19,52 @@ export interface CustomRequest extends Request {
     email: string;
     password: string;
     isEmailVerified?: boolean;
-    title?: string;
-    desc?: string;
+    title: string;
+    desc: string;
     verification_code: string;
     date: string;
     capacity: number;
     eventId: string;
   };
   params: {
-    eventId: string;
-    userId: string;
+    eventId?: string;
+    userId?: string;
   };
+}
+
+// export interface CustomRequest extends Request {
+//   prisma: PrismaClient;
+//   user: {
+//     userId: string;
+//     roles: UserRoles[];
+//   };
+//   session: {
+//     user: Prisma.UserGetPayload<{
+//       include: { registrations: true };
+//     }>;
+//     event?: Prisma.EventGetPayload<{
+//       include: { registrations: { include: { user: true } } };
+//     }>;
+//     registration?: Prisma.RegistrationGetPayload<{
+//       include: { user: true; event: true };
+//     }>;
+//   };
+//   files?: {
+//     avatar?: UploadedFile;
+//     [key: string]: UploadedFile | UploadedFile[] | undefined;
+//   };
+// }
+
+export interface JwtUserPayload {
+  id: string | number;
+  email: string;
+  role: string;
+}
+
+export interface JwtEmailPayload {
+  code: string;
+  name: string;
+  user: JwtUserPayload;
 }
 
 // mail options
