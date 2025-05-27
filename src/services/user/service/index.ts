@@ -1,6 +1,7 @@
 import bcrypt from "bcryptjs";
 import { createAccessToken, sendError, verifyPassword } from "../../../library";
 import { prisma } from "../../../prisma/client";
+import { Prisma } from "@prisma/client";
 
 /** User service class. */
 export class UserService {
@@ -17,7 +18,7 @@ export class UserService {
 
     const data = { ...payload, password: decodePwd };
 
-    await this.userModel.create({ data });
+    return await this.userModel.create({ data });
   }
 
   /**
@@ -26,7 +27,7 @@ export class UserService {
    * @returns User Document
    */
   public async authenticate({ ...data }) {
-    const foundUser = await this.findUserByEmail(data.email);
+    const foundUser: any = await this.findUserByEmail(data.email);
 
     if (!foundUser) sendError.unauthorizationError(`Invalid email or password!`);
 
@@ -70,15 +71,75 @@ export class UserService {
   };
 
   public async findUserByEmail(email: string) {
-    return this.userModel.findUnique({ where: { email } });
+    return await this.userModel.findUnique({ where: { email } });
+  }
+
+  /** Find all users
+   * @returns User Document */
+  public async getAllUser(query?: Record<string, any>) {
+    const { sort, fields, role, isEmailVerified } = query || {};
+
+    /** Get all users with optional sorting, pagination, filtering, and field selection */
+    const page = Number(query?.page) || 1;
+    const limit = Number(query?.limit) || 10;
+
+    if (query?.page < 1 || query?.limit < 1) sendError.BadRequestError("'limit' or 'page' query params must be positive numbers");
+
+    const skip = (page - 1) * limit;
+
+    // Sorting: sort=name:asc or sort=createdAt:desc
+    let orderBy: Prisma.UserOrderByWithRelationInput = { createdAt: "desc" };
+    if (sort) {
+      const [field, direction] = sort.split(":"); // e.g. sort=name:asc
+      orderBy = { [field]: direction === "asc" ? "asc" : "desc" };
+    }
+
+    // Filtering
+    const where: Prisma.UserWhereInput = {};
+    if (role) where.role = role;
+    if (typeof isEmailVerified !== "undefined") {
+      where.isEmailVerified = isEmailVerified === "true";
+    }
+
+    // Field Selection
+    let select: Prisma.UserSelect | undefined;
+    if (fields) {
+      const fieldArray = fields.split(",");
+      select = fieldArray.reduce((acc: any, field: string) => {
+        acc[field.trim()] = true;
+        return acc;
+      }, {});
+    }
+
+    const users = await this.userModel.findMany({
+      where,
+      orderBy,
+      take: limit,
+      skip,
+      select,
+    });
+
+    const total = await this.userModel.count({ where });
+
+    return {
+      meta: {
+        page,
+        limit,
+        total,
+        totalPages: Math.ceil(total / limit),
+      },
+      data: users,
+    };
   }
 
   //   async findUserById() {
   //     return this.userModel.findMany(args);
   //   }
 
+  /** Get a user by id
+   * @returns User Document */
   public async findUserById(id: string) {
-    return this.userModel.findUnique({ where: { id } });
+    return await this.userModel.findUnique({ where: { id } });
   }
 
   /** Updates user password
@@ -103,8 +164,9 @@ export class UserService {
     });
   }
 
+  /** Delete user by id */
   public async delUser(id: string) {
-    return this.userModel.delete({ where: { id } });
+    this.userModel.delete({ where: { id } });
   }
 }
 

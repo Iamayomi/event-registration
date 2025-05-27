@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { validate } from "../../../middlewares/validation";
+import { validate } from "../../../middlewares";
 import * as _ from "../schema-validation";
-import { authController } from "../controller/index";
+import { authController } from "../controller";
 
 /**  Auth Services */
 export default (router: Router) => {

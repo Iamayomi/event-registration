@@ -13,7 +13,7 @@ export const authenticator = async (req: any, res: Response, next: NextFunction)
 
   if (!user) sendError.unauthorizationError();
 
-  // // Populate req.user
+  // Populate req.user
   req.user = user;
 
   next();

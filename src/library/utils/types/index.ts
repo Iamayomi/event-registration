@@ -5,14 +5,15 @@ export type ErrorData = Record<string, any>;
 
 export type LogStatus = "INFO" | "WARN" | "ERROR" | "SUCCESS" | "DEBUG";
 
-// export enum UserRoles {
-//   USER = "user",
-//   ADMIN = "admin",
-// }
+export enum UserRoles {
+  USER = "user",
+  ADMIN = "admin",
+}
 export interface CustomRequest extends Request {
   user?: {
-    userId: string;
+    id: string;
     email?: string;
+    role?: string;
   };
   body: {
     name: string;
@@ -20,9 +21,9 @@ export interface CustomRequest extends Request {
     password: string;
     isEmailVerified?: boolean;
     title: string;
-    desc: string;
+    description: string;
     verification_code: string;
-    date: string;
+    date: Date;
     capacity: number;
     eventId: string;
   };
