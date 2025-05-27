@@ -17,13 +17,49 @@ GET http://localhost:4000/api/v1/admin/get-users
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzZGYwZGQ0MC0zYWVkLTRkYzMtYjJiNS1hMWE0MzA4ZWFjMGUiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImF5b21pZGVzaGVyaWYyMDE5QGdtYWlsLmNvbSIsImlhdCI6MTc0ODMwOTE3MSwiZXhwIjoxNzQ4NTY4MzcxfQ.e0UyM2tt8Qf-h_Z7JV8JtYVqXMagGX4eJyA-bhknFTk
 
 
+#### CREATE AN EVENT
+POST http://localhost:4000/api/v1/event
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzZGYwZGQ0MC0zYWVkLTRkYzMtYjJiNS1hMWE0MzA4ZWFjMGUiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImF5b21pZGVzaGVyaWYyMDE5QGdtYWlsLmNvbSIsImlhdCI6MTc0ODMwOTE3MSwiZXhwIjoxNzQ4NTY4MzcxfQ.e0UyM2tt8Qf-h_Z7JV8JtYVqXMagGX4eJyA-bhknFTk
+Content-Type: application/json
+
+{
+  "title": "Another Event",
+  "description": "Creating another new event",
+  "date": "2025:00:46:34 +0000",
+  "capacity": 4
+}
+
+
+#### UPDATE AN EVENT
+PUT http://localhost:4000/api/v1/event/08d4b81f-031a-4193-93b2-fb239b8c2854
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzZGYwZGQ0MC0zYWVkLTRkYzMtYjJiNS1hMWE0MzA4ZWFjMGUiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImF5b21pZGVzaGVyaWYyMDE5QGdtYWlsLmNvbSIsImlhdCI6MTc0ODMwOTE3MSwiZXhwIjoxNzQ4NTY4MzcxfQ.e0UyM2tt8Qf-h_Z7JV8JtYVqXMagGX4eJyA-bhknFTk
+Content-Type: application/json
+
+{
+  "title": "Update Event",
+  "description": "Update another an event",
+  "date": "2025:00:46:34 +0000",
+  "capacity": 7
+}
+
+
+####  GET AN EVENT
+GET http://localhost:4000/api/v1/event/08d4b81f-031a-4193-93b2-fb239b8c2854
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzZGYwZGQ0MC0zYWVkLTRkYzMtYjJiNS1hMWE0MzA4ZWFjMGUiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImF5b21pZGVzaGVyaWYyMDE5QGdtYWlsLmNvbSIsImlhdCI6MTc0ODMwOTE3MSwiZXhwIjoxNzQ4NTY4MzcxfQ.e0UyM2tt8Qf-h_Z7JV8JtYVqXMagGX4eJyA-bhknFTk
+
+
+####  SEARCH A EVENT
+GET http://localhost:4000/api/v1/events/search
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzZGYwZGQ0MC0zYWVkLTRkYzMtYjJiNS1hMWE0MzA4ZWFjMGUiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImF5b21pZGVzaGVyaWYyMDE5QGdtYWlsLmNvbSIsImlhdCI6MTc0ODMwOTE3MSwiZXhwIjoxNzQ4NTY4MzcxfQ.e0UyM2tt8Qf-h_Z7JV8JtYVqXMagGX4eJyA-bhknFTk
+
+
 ####  GET A USER
 GET http://localhost:4000/api/v1/user/2cfe3472-314c-4f57-8864-a530a8c1fed6
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzZGYwZGQ0MC0zYWVkLTRkYzMtYjJiNS1hMWE0MzA4ZWFjMGUiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImF5b21pZGVzaGVyaWYyMDE5QGdtYWlsLmNvbSIsImlhdCI6MTc0ODMwOTE3MSwiZXhwIjoxNzQ4NTY4MzcxfQ.e0UyM2tt8Qf-h_Z7JV8JtYVqXMagGX4eJyA-bhknFTk
 
 
 
-#### ADMIN DEL USER
+#### DELETE USER
 DELETE  http://localhost:4000/api/v1/admin/del-user/fbbc5284-95d5-4a25-b3ea-389aa60d0ed3
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzZGYwZGQ0MC0zYWVkLTRkYzMtYjJiNS1hMWE0MzA4ZWFjMGUiLCJyb2xlIjoiVVNFUiIsImVtYWlsIjoiYXlvbWlkZXNoZXJpZjIwMTlAZ21haWwuY29tIiwiaWF0IjoxNzQ4MzA3Mzg2LCJleHAiOjE3NDg1NjY1ODZ9.JW1I2y3twEjFmIsTfk_Fp8oHpQJHW20Y9SUc61owEmc
 
@@ -31,7 +67,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzZGYwZ
 #### LOGOUT USER
 POST http://localhost:4000/api/v1/user/logout
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4ODk5MzIwNi0wYTljLTRiNmQtODQ1NS1mMWQxMDA3N2RmMjYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoiYXlvbWlkZXNoZXJpZjIwMTlAZ21haWwuY29tIiwiaWF0IjoxNzQ4MjY0MDc1LCJleHAiOjE3NDg1MjMyNzV9.9m4Od6lC0QNe4B77tzOblHppXX3rcK4S2DUPe_ZLvZk
-
 
 
 #### LOGIN A USER

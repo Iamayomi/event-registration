@@ -9,15 +9,15 @@ import { UserRoles } from "../../../library";
 export default (router: Router) => {
   /* ************* USER ROUTES ************* */
 
-  // profile
+  // Get user profile
   router.route("/user/profile").get(authenticator, userController.getProfile);
 
-  // get a user
+  // Get a user
   router.route("/user/:userId").get(authenticator, userController.getUser);
 
-  // admin get all users
-  router.get("/admin/get-users", authenticator, validateRoles([UserRoles.ADMIN]), userController.getAllUsers);
+  // Search all users
+  router.get("/users/search", authenticator, validateRoles([UserRoles.ADMIN]), userController.getAllUsers);
 
-  // admin delete user
-  router.delete("/admin/del-user/:userId", authenticator, userController.delUser);
+  // Delete user
+  router.delete("/user/:userId", authenticator, validateRoles([UserRoles.ADMIN]), userController.delUser);
 };

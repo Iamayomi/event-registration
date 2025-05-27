@@ -21,9 +21,9 @@ export interface CustomRequest extends Request {
     password: string;
     isEmailVerified?: boolean;
     title: string;
-    desc: string;
+    description: string;
     verification_code: string;
-    date: string;
+    date: Date;
     capacity: number;
     eventId: string;
   };
