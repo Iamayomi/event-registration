@@ -103,10 +103,6 @@ export class UserService {
     });
   }
 
-  public async updateUser(id: string, data: any) {
-    return this.userModel.update({ where: { id }, data });
-  }
-
   public async delUser(id: string) {
     return this.userModel.delete({ where: { id } });
   }

@@ -1,7 +1,7 @@
 
 #### SEND REQUEST TO GETS A PROFILE
-GET http://localhost:8080/api/v1/users/profile
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5vdEBnbWFpbC5jb20iLCJ1c2VySWQiOjEsImlhdCI6MTczNTM4NzQ4MSwiZXhwIjoxNzM1NDczODgxfQ.6SlVtKAGykfS-zTqfYsOh2MdoV5wzalaNHbBNx1p38c
+GET http://localhost:4000/api/v1/user/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4ODk5MzIwNi0wYTljLTRiNmQtODQ1NS1mMWQxMDA3N2RmMjYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoiYXlvbWlkZXNoZXJpZjIwMTlAZ21haWwuY29tIiwiaWF0IjoxNzQ4MjY0MDc1LCJleHAiOjE3NDg1MjMyNzV9.9m4Od6lC0QNe4B77tzOblHppXX3rcK4S2DUPe_ZLvZk
 
 #### SEND REQUEST TO GETS A PROFILE
 POST http://localhost:4000/api/v1/auth/verify-email
@@ -11,6 +11,12 @@ Content-Type: application/json
 {
   "verification_code": "581195"
 }
+
+#### LOG OUT USER
+POST http://localhost:4000/api/v1/user/logout
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4ODk5MzIwNi0wYTljLTRiNmQtODQ1NS1mMWQxMDA3N2RmMjYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoiYXlvbWlkZXNoZXJpZjIwMTlAZ21haWwuY29tIiwiaWF0IjoxNzQ4MjY0MDc1LCJleHAiOjE3NDg1MjMyNzV9.9m4Od6lC0QNe4B77tzOblHppXX3rcK4S2DUPe_ZLvZk
+
+
 
 #### LOGIN A USER
 POST http://localhost:4000/api/v1/auth/login

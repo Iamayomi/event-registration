@@ -23,6 +23,7 @@ class AuthController {
     const data = req.body;
 
     const newUser = await this.service.createUser(data);
+    // console.log(newUser);
 
     const { name, email, token, code } = createVericationToken(newUser);
 

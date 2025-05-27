@@ -165,10 +165,10 @@ export const createAccessToken = function (user: any, expiresAt: number = TIME_I
 
 export const createVericationToken = function (user: any, length?: number, exp?: number) {
   const { code } = getRandomNumbers(length);
+  console.log(user);
 
   const data = {
     code,
-    id: user.id,
     name: user.name,
     email: user.email,
     role: user.role,
