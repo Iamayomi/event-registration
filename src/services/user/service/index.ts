@@ -17,7 +17,7 @@ export class UserService {
 
     const data = { ...payload, password: decodePwd };
 
-    await this.userModel.create({ data });
+    return await this.userModel.create({ data });
   }
 
   /**
@@ -26,7 +26,7 @@ export class UserService {
    * @returns User Document
    */
   public async authenticate({ ...data }) {
-    const foundUser = await this.findUserByEmail(data.email);
+    const foundUser: any = await this.findUserByEmail(data.email);
 
     if (!foundUser) sendError.unauthorizationError(`Invalid email or password!`);
 
@@ -70,15 +70,23 @@ export class UserService {
   };
 
   public async findUserByEmail(email: string) {
-    return this.userModel.findUnique({ where: { email } });
+    return await this.userModel.findUnique({ where: { email } });
+  }
+
+  /** Find all users
+   * @returns User Document */
+  public async getAllUser() {
+    return await this.userModel.findMany();
   }
 
   //   async findUserById() {
   //     return this.userModel.findMany(args);
   //   }
 
+  /** Get a user by id
+   * @returns User Document */
   public async findUserById(id: string) {
-    return this.userModel.findUnique({ where: { id } });
+    return await this.userModel.findUnique({ where: { id } });
   }
 
   /** Updates user password
@@ -103,8 +111,10 @@ export class UserService {
     });
   }
 
+  /** Delete user by id
+   * @returns User Document */
   public async delUser(id: string) {
-    return this.userModel.delete({ where: { id } });
+    this.userModel.delete({ where: { id } });
   }
 }
 

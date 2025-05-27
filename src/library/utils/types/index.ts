@@ -5,14 +5,15 @@ export type ErrorData = Record<string, any>;
 
 export type LogStatus = "INFO" | "WARN" | "ERROR" | "SUCCESS" | "DEBUG";
 
-// export enum UserRoles {
-//   USER = "user",
-//   ADMIN = "admin",
-// }
+export enum UserRoles {
+  USER = "user",
+  ADMIN = "admin",
+}
 export interface CustomRequest extends Request {
   user?: {
-    userId: string;
+    id: string;
     email?: string;
+    role?: string;
   };
   body: {
     name: string;

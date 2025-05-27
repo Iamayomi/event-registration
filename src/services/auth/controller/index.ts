@@ -23,7 +23,6 @@ class AuthController {
     const data = req.body;
 
     const newUser = await this.service.createUser(data);
-    // console.log(newUser);
 
     const { name, email, token, code } = createVericationToken(newUser);
 
@@ -49,8 +48,6 @@ class AuthController {
 
     const userData: any = await this.service.authenticate(data);
 
-    let token = createAccessToken(userData);
-
     if (!userData?.isEmailVerified) {
       const { name, email, token, code } = createVericationToken(userData);
 
@@ -64,15 +61,16 @@ class AuthController {
         success: true,
         message: `Your email has not been verified. Use the code that was sent to ${obscureEmail(email)}`,
       });
+    } else {
+      let token = createAccessToken(userData);
+      res.setHeader("Authorization", token);
+
+      res.status(status.OK).json({
+        success: true,
+        message: "Login successful",
+        data: userData,
+      });
     }
-
-    res.setHeader("Authorization", token);
-
-    res.status(status.OK).json({
-      success: true,
-      message: "Login successful",
-      data: userData,
-    });
   };
 
   /**
