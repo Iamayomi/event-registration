@@ -30,6 +30,7 @@ export interface CustomRequest extends Request {
   params: {
     eventId?: string;
     userId?: string;
+    registerId?: string;
   };
 }
 

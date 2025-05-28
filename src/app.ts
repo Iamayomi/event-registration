@@ -7,7 +7,7 @@ import morgan from "morgan";
 import helmet from "helmet";
 
 import router from "./apis/router";
-import { errorHandler } from "./middlewares";
+import { errorHandler, rateLimiter } from "./middlewares";
 import { corsOptions } from "./library";
 
 const app = express();
@@ -20,6 +20,7 @@ app.use(helmet());
 app.use(morgan("combined"));
 app.use(cookieParser());
 app.use(express.json());
+app.use(rateLimiter);
 
 app.use("/api/v1", router());
 
