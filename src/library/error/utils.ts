@@ -56,7 +56,7 @@ export const notfoundError = (message?: string, data?: ErrorData) => {
  * @param data
  * @statusCode 400 Bad request
  */
-export const BadRequestError = (message?: string, data?: ErrorData) => {
+export const badrequestError = (message?: string, data?: ErrorData) => {
   throw new error.BadRequestError(message, data);
 };
 

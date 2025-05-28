@@ -1,6 +1,6 @@
 import { Response } from "express";
 import { StatusCodes as status } from "http-status-codes";
-import { CustomRequest } from "../../../library";
+import { CustomRequest, sendError } from "../../../library";
 import { EventService, eventService } from "../service";
 
 class EventController {
@@ -35,6 +35,8 @@ class EventController {
   public getEvent = async (req: CustomRequest, res: Response) => {
     const eventId = req.params.eventId as string;
 
+    if (!eventId) sendError.badrequestError("Missing event id");
+
     const event = await this.service.findEventById(eventId);
 
     res.status(status.OK).json({
@@ -65,6 +67,8 @@ class EventController {
   public updateEvent = async (req: CustomRequest, res: Response) => {
     const eventId = req.params.eventId as string;
 
+    if (!eventId) sendError.badrequestError("Missing event id");
+
     const event = await this.service.updateEvent(eventId, req.body);
 
     res.status(status.OK).json({
@@ -81,6 +85,8 @@ class EventController {
    */
   public delEvent = async (req: CustomRequest, res: Response) => {
     const eventId = req.params.eventId as string;
+
+    if (!eventId) sendError.badrequestError("Missing event id");
 
     await this.service.delEvent(eventId);
 

@@ -9,19 +9,29 @@ export class EventService {
   /** Create an event
    * @returns Event Document */
   public async createEvent(data: any) {
+    const eventExists = await this.eventModel.findFirst({
+      where: {
+        title: data.title,
+        description: data.description,
+        date: data.date,
+        capacity: data.capacity,
+      },
+    });
+
+    if (eventExists) sendError.duplicateRequestError();
+
     return await this.eventModel.create({ data });
   }
 
   /** Find all events by id
    * @returns Event Document */
-
   public async findAllEvents(query?: Record<string, any>) {
     const { sort, title, description, startDate, endDate, minCapacity, includeRegistrations = false, maxCapacity } = query || {};
 
     const page = Number(query?.page) || 1;
     const limit = Number(query?.limit) || 10;
 
-    if (query?.page < 1 || query?.limit < 1) sendError.BadRequestError("'limit' or 'page' query params must be positive numbers");
+    if (query?.page < 1 || query?.limit < 1) sendError.badrequestError("'limit' or 'page' query params must be positive numbers");
 
     const skip = (page - 1) * limit;
 
@@ -96,7 +106,12 @@ export class EventService {
   /** Find an event by id
    * @returns Event Document */
   public async findEventById(id: string) {
-    return await this.eventModel.findUnique({ where: { id } });
+    return await this.eventModel.findUnique({
+      where: { id },
+      include: {
+        _count: { select: { registrations: true } },
+      },
+    });
   }
 
   /** Updates an event

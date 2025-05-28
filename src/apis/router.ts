@@ -1,8 +1,9 @@
 import { Router } from "express";
 import { StatusCodes as status } from "http-status-codes";
-import authenticationRoutes from "../services/auth/routes";
+import authRoutes from "../services/auth/routes";
 import userRoutes from "../services/user/routes";
 import eventRoutes from "../services/event/routes";
+import registerRoutes from "../services/registration/routes";
 
 const router = Router();
 
@@ -10,13 +11,16 @@ const router = Router();
  * @returns all the routes for the entire app */
 export default () => {
   /** auth routes */
-  authenticationRoutes(router);
+  authRoutes(router);
 
   /** user routes */
   userRoutes(router);
 
   /** event routes */
   eventRoutes(router);
+
+  /** register routes */
+  registerRoutes(router);
 
   /** Catch all route handler */
   router.use((_, res) => {

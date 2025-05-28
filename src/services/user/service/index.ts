@@ -40,7 +40,7 @@ export class UserService {
 
   /** Authenticates user email */
   public async authenticateEmail(data: any) {
-    if (data?.verification_code.toString() !== data?.code.toString()) sendError.BadRequestError("Oops! That code was not a match, try again.");
+    if (data?.verification_code.toString() !== data?.code.toString()) sendError.badrequestError("Oops! That code was not a match, try again.");
 
     await this.updateEmailStatus(data.email, true);
   }
@@ -51,9 +51,9 @@ export class UserService {
   public async verifyPasswordResetCode(data: any) {
     const foundUser = await this.findUserByEmail(data.email);
 
-    if (data.password_reset_code.toString() !== data.code.toString()) sendError.BadRequestError("Oops! That code was not a match, try again.");
+    if (data.password_reset_code.toString() !== data.code.toString()) sendError.badrequestError("Oops! That code was not a match, try again.");
 
-    if (Date.now() > data.expiresAt) sendError.BadRequestError("Sorry, that code expired. Try again.");
+    if (Date.now() > data.expiresAt) sendError.badrequestError("Sorry, that code expired. Try again.");
 
     return createAccessToken(foundUser);
   }
@@ -83,7 +83,7 @@ export class UserService {
     const page = Number(query?.page) || 1;
     const limit = Number(query?.limit) || 10;
 
-    if (query?.page < 1 || query?.limit < 1) sendError.BadRequestError("'limit' or 'page' query params must be positive numbers");
+    if (query?.page < 1 || query?.limit < 1) sendError.badrequestError("'limit' or 'page' query params must be positive numbers");
 
     const skip = (page - 1) * limit;
 
@@ -156,8 +156,12 @@ export class UserService {
   /** Updates user email status
    * @returns User Document */
   public async updateEmailStatus(email: string, val: boolean) {
+    const user = await this.findUserByEmail(email);
+
+    if (!user) sendError.notfoundError("User was not found");
+
     return this.userModel.update({
-      where: { email },
+      where: { email: user?.email },
       data: {
         isEmailVerified: val,
       },
@@ -166,7 +170,11 @@ export class UserService {
 
   /** Delete user by id */
   public async delUser(id: string) {
-    this.userModel.delete({ where: { id } });
+    const user = await this.findUserById(id);
+
+    if (!user) sendError.notfoundError("That User was not found");
+
+    await this.userModel.delete({ where: { id: user?.id } });
   }
 }
 

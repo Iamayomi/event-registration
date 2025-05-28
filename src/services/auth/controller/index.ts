@@ -1,9 +1,20 @@
 import { Request, Response } from "express";
 import { StatusCodes as status } from "http-status-codes";
-import { CustomRequest, TIME_IN, createAccessToken, createVericationToken, emailVerificationResendTemplate, newPasswordSuccessTemplate, resetPasswordTemplate } from "../../../library";
+import {
+  CustomRequest,
+  Email,
+  obscureEmail,
+  emailVerificationTemplate,
+  sendError,
+  verifyAuthorization,
+  TIME_IN,
+  createAccessToken,
+  createVericationToken,
+  emailVerificationResendTemplate,
+  newPasswordSuccessTemplate,
+  resetPasswordTemplate,
+} from "../../../library";
 import { UserService, userService } from "../../../services/user/service";
-
-import { Email, obscureEmail, emailVerificationTemplate, sendError, verifyAuthorization } from "../../../library";
 
 class AuthController {
   protected service: UserService;
