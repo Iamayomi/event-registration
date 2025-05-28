@@ -90,7 +90,7 @@ class EventController {
 
     await this.service.delEvent(eventId);
 
-    res.status(status.NO_CONTENT).json({ success: true, message: "Event Deleted Successfully" });
+    res.status(status.ACCEPTED).json({ success: true, message: "Event Deleted Successfully" });
   };
 }
 

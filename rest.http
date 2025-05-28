@@ -1,14 +1,18 @@
 #### REGISTER FOR AN EVENT
 POST http://localhost:4000/api/v1/register/141744b4-749f-4bb9-a551-cd1bf91e1f71
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1MDQxNzYzMy1mMGFiLTRiOTgtODZmNi04ZDc0OTUzNjk5ZTEiLCJyb2xlIjoidXNlciIsImVtYWlsIjoiYXlvbWlkZUBnbWFpbC5jb20iLCJpYXQiOjE3NDg0MTM4MDgsImV4cCI6MTc0ODY3MzAwOH0.P-8wvRC2TehsfHORPyGlFNR3JNpQ8VYlHqKA7T1U7RA
+Content-Type: application/json
+
+#### UNREGISTER AN EVENT
+DELETE http://localhost:4000/api/v1/unregister/5df81ca2-17fa-438f-a47f-1c01dbaff12e
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1MDQxNzYzMy1mMGFiLTRiOTgtODZmNi04ZDc0OTUzNjk5ZTEiLCJyb2xlIjoidXNlciIsImVtYWlsIjoiYXlvbWlkZUBnbWFpbC5jb20iLCJpYXQiOjE3NDg0MTM4MDgsImV4cCI6MTc0ODY3MzAwOH0.P-8wvRC2TehsfHORPyGlFNR3JNpQ8VYlHqKA7T1U7RA
+
+#### GET USER REGISTERED EVENT
+GET http://localhost:4000/api/v1/register/50417633-f0ab-4b98-86f6-8d74953699e1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1MDQxNzYzMy1mMGFiLTRiOTgtODZmNi04ZDc0OTUzNjk5ZTEiLCJyb2xlIjoidXNlciIsImVtYWlsIjoiYXlvbWlkZUBnbWFpbC5jb20iLCJpYXQiOjE3NDg0MDg2NDMsImV4cCI6MTc0ODY2Nzg0M30.cBw1dcOWJDflUiHn8RNsGlYVM8HEFz5zOsbzNlRMXTU
 Content-Type: application/json
 
-#### GET USER REGISTERED EVENT
-GET http://localhost:4000/api/v1/registers/50417633-f0ab-4b98-86f6-8d74953699e1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1MDQxNzYzMy1mMGFiLTRiOTgtODZmNi04ZDc0OTUzNjk5ZTEiLCJyb2xlIjoidXNlciIsImVtYWlsIjoiYXlvbWlkZUBnbWFpbC5jb20iLCJpYXQiOjE3NDg0MDg2NDMsImV4cCI6MTc0ODY2Nzg0M30.cBw1dcOWJDflUiHn8RNsGlYVM8HEFz5zOsbzNlRMXTU
-Content-Type: application/json
-
-#### GET USER REGISTERED EVENT
+#### GET ALL USER REGISTERED EVENT
 GET http://localhost:4000/api/v1/registers/50417633-f0ab-4b98-86f6-8d74953699e1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1MDQxNzYzMy1mMGFiLTRiOTgtODZmNi04ZDc0OTUzNjk5ZTEiLCJyb2xlIjoidXNlciIsImVtYWlsIjoiYXlvbWlkZUBnbWFpbC5jb20iLCJpYXQiOjE3NDg0MDg2NDMsImV4cCI6MTc0ODY2Nzg0M30.cBw1dcOWJDflUiHn8RNsGlYVM8HEFz5zOsbzNlRMXTU
 Content-Type: application/json
@@ -37,11 +41,15 @@ Content-Type: application/json
   "capacity": 7
 }
 
-####  GET AN EVENT
-GET http://localhost:4000/api/v1/event/141744b4-749f-4bb9-a551-cd1bf91e1f71
+#### GET AN EVENT
+GET http://localhost:4000/api/v1/event/c9d17f15-94fd-44cf-970c-f5e3a1abb9cd
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJiY2QwZjYyZC1jMDg4LTQ1ZjAtYWExOC00ODk1ODA3NGIzYjMiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImF5b21pZGVzQGdtYWlsLmNvbSIsImlhdCI6MTc0ODQwODU1MCwiZXhwIjoxNzQ4NjY3NzUwfQ.xnlqutB2k0NcW6G5lIKKgJ-invIKYNb_SgYmGfFFU3E
 
-####  SEARCH A EVENT
+#### DELETE AN EVENT
+DELETE http://localhost:4000/api/v1/event/141744b4-749f-4bb9-a551-cd1bf91e1f71
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJiY2QwZjYyZC1jMDg4LTQ1ZjAtYWExOC00ODk1ODA3NGIzYjMiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImF5b21pZGVzQGdtYWlsLmNvbSIsImlhdCI6MTc0ODQwODU1MCwiZXhwIjoxNzQ4NjY3NzUwfQ.xnlqutB2k0NcW6G5lIKKgJ-invIKYNb_SgYmGfFFU3E
+
+#### SEARCH A EVENT
 GET http://localhost:4000/api/v1/events/search
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzZGYwZGQ0MC0zYWVkLTRkYzMtYjJiNS1hMWE0MzA4ZWFjMGUiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImF5b21pZGVzaGVyaWYyMDE5QGdtYWlsLmNvbSIsImlhdCI6MTc0ODMwOTE3MSwiZXhwIjoxNzQ4NTY4MzcxfQ.e0UyM2tt8Qf-h_Z7JV8JtYVqXMagGX4eJyA-bhknFTk
 
@@ -54,12 +62,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzZGYwZ
 GET http://localhost:4000/api/v1/admin/get-users
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzZGYwZGQ0MC0zYWVkLTRkYzMtYjJiNS1hMWE0MzA4ZWFjMGUiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImF5b21pZGVzaGVyaWYyMDE5QGdtYWlsLmNvbSIsImlhdCI6MTc0ODMwOTE3MSwiZXhwIjoxNzQ4NTY4MzcxfQ.e0UyM2tt8Qf-h_Z7JV8JtYVqXMagGX4eJyA-bhknFTk
 
-####  GET A USER
+#### GET A USER
 GET http://localhost:4000/api/v1/user/2cfe3472-314c-4f57-8864-a530a8c1fed6
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzZGYwZGQ0MC0zYWVkLTRkYzMtYjJiNS1hMWE0MzA4ZWFjMGUiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImF5b21pZGVzaGVyaWYyMDE5QGdtYWlsLmNvbSIsImlhdCI6MTc0ODMwOTE3MSwiZXhwIjoxNzQ4NTY4MzcxfQ.e0UyM2tt8Qf-h_Z7JV8JtYVqXMagGX4eJyA-bhknFTk
 
 #### DELETE USER
-DELETE  http://localhost:4000/api/v1/admin/del-user/fbbc5284-95d5-4a25-b3ea-389aa60d0ed3
+DELETE http://localhost:4000/api/v1/user/fbbc5284-95d5-4a25-b3ea-389aa60d0ed3
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzZGYwZGQ0MC0zYWVkLTRkYzMtYjJiNS1hMWE0MzA4ZWFjMGUiLCJyb2xlIjoiVVNFUiIsImVtYWlsIjoiYXlvbWlkZXNoZXJpZjIwMTlAZ21haWwuY29tIiwiaWF0IjoxNzQ4MzA3Mzg2LCJleHAiOjE3NDg1NjY1ODZ9.JW1I2y3twEjFmIsTfk_Fp8oHpQJHW20Y9SUc61owEmc
 
 #### LOGOUT USER

@@ -12,5 +12,8 @@ export default (router: Router) => {
   router.get("/register/:userId", authenticator, registerController.getRegisterEvent);
 
   // Fetch user all registered event route
-  router.get("/registers/:userId", authenticator, registerController.getRegistersEvent);
+  router.get("/registers/:userId", authenticator, registerController.getRegisterEvents);
+
+  // Unregister event route
+  router.delete("/unregister/:registerId", authenticator, registerController.unregisterEvent);
 };

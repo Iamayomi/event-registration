@@ -16,10 +16,6 @@ export class RegistrationService {
   public async registerForEvent(userId: string, eventId: string) {
     const event: any = await this.eventService.findEventById(eventId);
 
-    if (event.date > new Date()) sendError.badrequestError("This event has already been closed");
-
-    if (event._count.registrations >= event.capacity) sendError.badrequestError("Event is fully booked");
-
     const userEvent = await this.registrationModel.findFirst({ where: { eventId: event?.id, userId } });
 
     if (userEvent) sendError.badrequestError("This event has already been register by user");
@@ -42,6 +38,14 @@ export class RegistrationService {
     return registerEvent;
   }
 
+  /** Find Register event by id
+   * @returns Register Document */
+  public async findReigsterEventById(id: string) {
+    return await this.registrationModel.findUnique({
+      where: { id },
+    });
+  }
+
   /** Find event register by user
    * @returns Register Document */
   public async findEventRegisterByUser(id: string) {
@@ -55,33 +59,14 @@ export class RegistrationService {
     return registerEvent;
   }
 
-  /** Updates user password
-   * @returns User Document */
-  //   public async updateUserPassword(id: string, val: string) {
-  //     return this.registrationModel.update({
-  //       where: { id },
-  //       data: {
-  //         password: val,
-  //       },
-  //     });
-  //   }
+  /** Unregister Event user
+   * @returns Register Document */
+  public async unregisterEvent(registerId: string) {
+    await this.registrationModel.delete({ where: { id: registerId } });
 
-  /** Updates user email status
-   * @returns User Document */
-  //   public async updateEmailStatus(email: string, val: boolean) {
-  //     return this.registrationModel.update({
-  //       where: { email },
-  //       data: {
-  //         isEmailVerified: val,
-  //       },
-  //     });
-  //   }
-
-  // public async delUser(id: string) {
-  //   return this.registrationModel.delete({ where: { id } });
-  // }
+    return { success: true, message: "User unregister Event Successfully" };
+  }
 }
-
 /**
  * Instance of the RegistrationService class used to handle user-related database queries
  * @instance {RegistrationService} */
