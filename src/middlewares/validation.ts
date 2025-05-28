@@ -12,7 +12,7 @@ export const validate = (fieldsSchema: ObjectSchema) => (req: CustomRequest, _: 
 
   const { error, value } = fieldsSchema.validate(payload);
 
-  if (error) sendError.BadRequestError(error.message);
+  if (error) sendError.badrequestError(error.message);
 
   req.body = { ...payload, ...value };
 

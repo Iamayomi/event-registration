@@ -1,34 +1,29 @@
-
-#### SEND REQUEST TO GETS A PROFILE
-GET http://localhost:4000/api/v1/user/profile
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzZGYwZGQ0MC0zYWVkLTRkYzMtYjJiNS1hMWE0MzA4ZWFjMGUiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImF5b21pZGVzaGVyaWYyMDE5QGdtYWlsLmNvbSIsImlhdCI6MTc0ODMwOTE3MSwiZXhwIjoxNzQ4NTY4MzcxfQ.e0UyM2tt8Qf-h_Z7JV8JtYVqXMagGX4eJyA-bhknFTk
-
-#### SEND REQUEST TO GETS A PROFILE
-POST http://localhost:4000/api/v1/auth/verify-email
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb2RlIjo1Mjc5MzYsImlkIjoiZWRiNDNlMTMtYjE1OS00Y2FlLTk0ZDYtMDRlYTA3YTg3NTU0IiwibmFtZSI6IkFtb2R1IG1vbGxlciIsImVtYWlsIjoiYXlvbWlkZXNoZXJpZjIwMTlAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3NDgyMDAxNTksImV4cCI6MTc0ODIwMzc1OX0.JBo93sau4xZik3GFKoy__6axtG228iQKD0VH4jSxfIo
+#### REGISTER FOR AN EVENT
+POST http://localhost:4000/api/v1/register/141744b4-749f-4bb9-a551-cd1bf91e1f71
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1MDQxNzYzMy1mMGFiLTRiOTgtODZmNi04ZDc0OTUzNjk5ZTEiLCJyb2xlIjoidXNlciIsImVtYWlsIjoiYXlvbWlkZUBnbWFpbC5jb20iLCJpYXQiOjE3NDg0MDg2NDMsImV4cCI6MTc0ODY2Nzg0M30.cBw1dcOWJDflUiHn8RNsGlYVM8HEFz5zOsbzNlRMXTU
 Content-Type: application/json
 
-{
-  "verification_code": "581195"
-}
+#### GET USER REGISTERED EVENT
+GET http://localhost:4000/api/v1/registers/50417633-f0ab-4b98-86f6-8d74953699e1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1MDQxNzYzMy1mMGFiLTRiOTgtODZmNi04ZDc0OTUzNjk5ZTEiLCJyb2xlIjoidXNlciIsImVtYWlsIjoiYXlvbWlkZUBnbWFpbC5jb20iLCJpYXQiOjE3NDg0MDg2NDMsImV4cCI6MTc0ODY2Nzg0M30.cBw1dcOWJDflUiHn8RNsGlYVM8HEFz5zOsbzNlRMXTU
+Content-Type: application/json
 
-#### ADMIN GET ALL USERS
-GET http://localhost:4000/api/v1/admin/get-users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzZGYwZGQ0MC0zYWVkLTRkYzMtYjJiNS1hMWE0MzA4ZWFjMGUiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImF5b21pZGVzaGVyaWYyMDE5QGdtYWlsLmNvbSIsImlhdCI6MTc0ODMwOTE3MSwiZXhwIjoxNzQ4NTY4MzcxfQ.e0UyM2tt8Qf-h_Z7JV8JtYVqXMagGX4eJyA-bhknFTk
-
+#### GET USER REGISTERED EVENT
+GET http://localhost:4000/api/v1/registers/50417633-f0ab-4b98-86f6-8d74953699e1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1MDQxNzYzMy1mMGFiLTRiOTgtODZmNi04ZDc0OTUzNjk5ZTEiLCJyb2xlIjoidXNlciIsImVtYWlsIjoiYXlvbWlkZUBnbWFpbC5jb20iLCJpYXQiOjE3NDg0MDg2NDMsImV4cCI6MTc0ODY2Nzg0M30.cBw1dcOWJDflUiHn8RNsGlYVM8HEFz5zOsbzNlRMXTU
+Content-Type: application/json
 
 #### CREATE AN EVENT
 POST http://localhost:4000/api/v1/event
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzZGYwZGQ0MC0zYWVkLTRkYzMtYjJiNS1hMWE0MzA4ZWFjMGUiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImF5b21pZGVzaGVyaWYyMDE5QGdtYWlsLmNvbSIsImlhdCI6MTc0ODMwOTE3MSwiZXhwIjoxNzQ4NTY4MzcxfQ.e0UyM2tt8Qf-h_Z7JV8JtYVqXMagGX4eJyA-bhknFTk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJiY2QwZjYyZC1jMDg4LTQ1ZjAtYWExOC00ODk1ODA3NGIzYjMiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImF5b21pZGVzQGdtYWlsLmNvbSIsImlhdCI6MTc0ODQwODU1MCwiZXhwIjoxNzQ4NjY3NzUwfQ.xnlqutB2k0NcW6G5lIKKgJ-invIKYNb_SgYmGfFFU3E
 Content-Type: application/json
 
 {
-  "title": "Another Event",
-  "description": "Creating another new event",
+  "title": "Another New Event",
+  "description": "another new event",
   "date": "2025:00:46:34 +0000",
-  "capacity": 4
+  "capacity": 10
 }
-
 
 #### UPDATE AN EVENT
 PUT http://localhost:4000/api/v1/event/08d4b81f-031a-4193-93b2-fb239b8c2854
@@ -42,56 +37,62 @@ Content-Type: application/json
   "capacity": 7
 }
 
-
 ####  GET AN EVENT
-GET http://localhost:4000/api/v1/event/08d4b81f-031a-4193-93b2-fb239b8c2854
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzZGYwZGQ0MC0zYWVkLTRkYzMtYjJiNS1hMWE0MzA4ZWFjMGUiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImF5b21pZGVzaGVyaWYyMDE5QGdtYWlsLmNvbSIsImlhdCI6MTc0ODMwOTE3MSwiZXhwIjoxNzQ4NTY4MzcxfQ.e0UyM2tt8Qf-h_Z7JV8JtYVqXMagGX4eJyA-bhknFTk
-
+GET http://localhost:4000/api/v1/event/141744b4-749f-4bb9-a551-cd1bf91e1f71
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJiY2QwZjYyZC1jMDg4LTQ1ZjAtYWExOC00ODk1ODA3NGIzYjMiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImF5b21pZGVzQGdtYWlsLmNvbSIsImlhdCI6MTc0ODQwODU1MCwiZXhwIjoxNzQ4NjY3NzUwfQ.xnlqutB2k0NcW6G5lIKKgJ-invIKYNb_SgYmGfFFU3E
 
 ####  SEARCH A EVENT
 GET http://localhost:4000/api/v1/events/search
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzZGYwZGQ0MC0zYWVkLTRkYzMtYjJiNS1hMWE0MzA4ZWFjMGUiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImF5b21pZGVzaGVyaWYyMDE5QGdtYWlsLmNvbSIsImlhdCI6MTc0ODMwOTE3MSwiZXhwIjoxNzQ4NTY4MzcxfQ.e0UyM2tt8Qf-h_Z7JV8JtYVqXMagGX4eJyA-bhknFTk
 
 
+#### SEND REQUEST TO GETS A PROFILE
+GET http://localhost:4000/api/v1/user/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzZGYwZGQ0MC0zYWVkLTRkYzMtYjJiNS1hMWE0MzA4ZWFjMGUiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImF5b21pZGVzaGVyaWYyMDE5QGdtYWlsLmNvbSIsImlhdCI6MTc0ODMwOTE3MSwiZXhwIjoxNzQ4NTY4MzcxfQ.e0UyM2tt8Qf-h_Z7JV8JtYVqXMagGX4eJyA-bhknFTk
+
+#### ADMIN GET ALL USERS
+GET http://localhost:4000/api/v1/admin/get-users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzZGYwZGQ0MC0zYWVkLTRkYzMtYjJiNS1hMWE0MzA4ZWFjMGUiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImF5b21pZGVzaGVyaWYyMDE5QGdtYWlsLmNvbSIsImlhdCI6MTc0ODMwOTE3MSwiZXhwIjoxNzQ4NTY4MzcxfQ.e0UyM2tt8Qf-h_Z7JV8JtYVqXMagGX4eJyA-bhknFTk
+
 ####  GET A USER
 GET http://localhost:4000/api/v1/user/2cfe3472-314c-4f57-8864-a530a8c1fed6
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzZGYwZGQ0MC0zYWVkLTRkYzMtYjJiNS1hMWE0MzA4ZWFjMGUiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6ImF5b21pZGVzaGVyaWYyMDE5QGdtYWlsLmNvbSIsImlhdCI6MTc0ODMwOTE3MSwiZXhwIjoxNzQ4NTY4MzcxfQ.e0UyM2tt8Qf-h_Z7JV8JtYVqXMagGX4eJyA-bhknFTk
-
-
 
 #### DELETE USER
 DELETE  http://localhost:4000/api/v1/admin/del-user/fbbc5284-95d5-4a25-b3ea-389aa60d0ed3
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzZGYwZGQ0MC0zYWVkLTRkYzMtYjJiNS1hMWE0MzA4ZWFjMGUiLCJyb2xlIjoiVVNFUiIsImVtYWlsIjoiYXlvbWlkZXNoZXJpZjIwMTlAZ21haWwuY29tIiwiaWF0IjoxNzQ4MzA3Mzg2LCJleHAiOjE3NDg1NjY1ODZ9.JW1I2y3twEjFmIsTfk_Fp8oHpQJHW20Y9SUc61owEmc
 
-
 #### LOGOUT USER
 POST http://localhost:4000/api/v1/user/logout
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4ODk5MzIwNi0wYTljLTRiNmQtODQ1NS1mMWQxMDA3N2RmMjYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoiYXlvbWlkZXNoZXJpZjIwMTlAZ21haWwuY29tIiwiaWF0IjoxNzQ4MjY0MDc1LCJleHAiOjE3NDg1MjMyNzV9.9m4Od6lC0QNe4B77tzOblHppXX3rcK4S2DUPe_ZLvZk
-
 
 #### LOGIN A USER
 POST http://localhost:4000/api/v1/auth/login
 Content-Type: application/json
 
 {
-  "email": "ayomidesherif2019@gmail.com",
+  "email": "ayomide@gmail.com",
   "password": "Test123#@"
 }
 
-#### CREATE A NEW User
+#### CREATE A NEW USER
 POST http://localhost:4000/api/v1/auth/register
 Content-Type: application/json
 
 {
   "name": "Amodu moller",
-  "email": "ayomide@gmail.com",
+  "email": "ayomides@gmail.com",
   "password": "Test123#@"
 }
 
-#### CREATE A NEW User
-DELETE  http://localhost:9200/songs
+#### SEND REQUEST TO VERIFY A EMAIL
+POST http://localhost:4000/api/v1/auth/verify-email
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb2RlIjo1Mjc5MzYsImlkIjoiZWRiNDNlMTMtYjE1OS00Y2FlLTk0ZDYtMDRlYTA3YTg3NTU0IiwibmFtZSI6IkFtb2R1IG1vbGxlciIsImVtYWlsIjoiYXlvbWlkZXNoZXJpZjIwMTlAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3NDgyMDAxNTksImV4cCI6MTc0ODIwMzc1OX0.JBo93sau4xZik3GFKoy__6axtG228iQKD0VH4jSxfIo
 Content-Type: application/json
 
+{
+  "verification_code": "581195"
+}
 
 #### SEND REQUEST TO FORGOT PASSWORD
 POST http://localhost:8080/api/v1/auth/forgot-password
@@ -101,12 +102,10 @@ Content-Type: application/json
   "email": "ayomidesherif2019@gmail.com"
 }
 
-
 #### SEND REQUEST TO RESEND VERIFICATION EMAIL CODE
 GET http://localhost:8080/api/v1/auth/resend-email-code
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImF5b21pZGVzaGVyaWYyMDE5QGdtYWlsLmNvbSIsImlhdCI6MTc0MjY4NTAxNCwiZXhwIjoxNzQyOTQ0MjE0fQ.JqTjd-y6mJXexJT7RuC1xgAU-9ZY5hYVqqkaXeiPyUI
-
 
 #### SEND REQUEST TO VERIFY FORGOT PASSWORD CODE
 POST  http://localhost:8080/api/v1/auth/forgot-password-code

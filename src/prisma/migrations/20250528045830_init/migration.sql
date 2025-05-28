@@ -16,7 +16,7 @@ CREATE TABLE "User" (
 CREATE TABLE "Event" (
     "id" TEXT NOT NULL,
     "title" TEXT NOT NULL,
-    "desc" TEXT NOT NULL,
+    "description" TEXT NOT NULL,
     "date" TIMESTAMP(3) NOT NULL,
     "capacity" INTEGER NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -29,8 +29,10 @@ CREATE TABLE "Event" (
 CREATE TABLE "Registration" (
     "id" TEXT NOT NULL,
     "userId" TEXT NOT NULL,
+    "date" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "eventId" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "Registration_pkey" PRIMARY KEY ("id")
 );

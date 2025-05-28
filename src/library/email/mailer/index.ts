@@ -1,7 +1,7 @@
 import nodemailer from "nodemailer";
 
-import { MailOptions } from "../utils";
-import { APP_NAME, customEnvs } from "../config";
+import { MailOptions } from "../../utils";
+import { APP_NAME, customEnvs } from "../../config";
 
 /**
  * Class containing methods for sending mail using several mailing services like nodemailer, and sendInBlue etc.
