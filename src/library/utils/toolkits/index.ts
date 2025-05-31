@@ -65,11 +65,14 @@ export const verifyAuthorization = (req: CustomRequest, message?: string) => {
  * @param secret
  * @returns decoded `data` OR `error message`
  */
-export const verifyJwtToken = (token: string, options?: { message?: string }, secret: string = customEnvs.jwtSecret) => {
+export const verifyJwtToken = (token: string, options?: { message?: string }, secret: string = customEnvs.jwtSecret): { data?: any; error?: string } => {
   try {
     const data = jwt.verify(token, secret);
 
-    if (data && typeof data !== "string") return { data };
+    if (data && typeof data !== "string") {
+      return { data };
+    }
+    return { error: "Invalid token payload" };
   } catch (err: any) {
     let message = "Invalid Token.";
 

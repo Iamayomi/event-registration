@@ -16,7 +16,6 @@ app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: true, limit: "50kb" }));
 app.use(express.json({ limit: "15mb", type: "application/json" }));
 app.use(helmet());
-app.use(helmet());
 app.use(morgan("combined"));
 app.use(cookieParser());
 app.use(express.json());

@@ -57,7 +57,7 @@ class AuthController {
   public logIn = async (req: CustomRequest, res: Response) => {
     const data = req.body;
 
-    const userData: any = await this.service.authenticate(data);
+    const userData = await this.service.authenticate(data);
 
     if (!userData?.isEmailVerified) {
       const { name, email, token, code } = createVericationToken(userData);
@@ -92,12 +92,12 @@ class AuthController {
   public verifyEmail = async (req: CustomRequest, res: Response) => {
     const { verification_code } = req.body;
 
-    const authData = verifyAuthorization(req, "That code was valid for 1 hour. Please try again.");
+    const { error, data } = verifyAuthorization(req, "That code was valid for 1 hour. Please try again.");
 
-    if (authData?.error) sendError.unauthorizationError(authData.error);
+    if (error) sendError.unauthorizationError(error);
 
     const userData = await this.service.authenticateEmail({
-      ...authData?.data,
+      ...data,
       verification_code,
     });
 
@@ -120,7 +120,7 @@ class AuthController {
   public forgotPassword = async (req: CustomRequest, res: Response) => {
     const { email } = req.body;
 
-    const userData: any = await this.service.findUserByEmail(email);
+    const userData = await this.service.findUserByEmail(email);
 
     const { code, name, token } = createVericationToken(userData, TIME_IN.minutes[15]);
 
@@ -144,12 +144,12 @@ class AuthController {
   public verifyPasswordResetCode = async (req: CustomRequest, res: Response) => {
     const payload = req.body;
 
-    const authData = verifyAuthorization(req, "That code was valid for 15 minutes. Please try again.");
+    const { data, error } = verifyAuthorization(req, "That code was valid for 15 minutes. Please try again.");
 
-    if (authData?.error) sendError.unauthorizationError(authData?.error);
+    if (error) sendError.unauthorizationError(error);
 
     const token = await this.service.verifyPasswordResetCode({
-      ...authData?.data,
+      ...data,
       ...payload,
     });
 
@@ -167,13 +167,13 @@ class AuthController {
    * @access public
    */
   public resendEmailVerificationCode = async (req: CustomRequest, res: Response) => {
-    const authData = verifyAuthorization(req);
+    const { data, error } = verifyAuthorization(req);
 
-    if (authData?.error) sendError.unauthorizationError(authData?.error);
+    if (error) sendError.unauthorizationError(error);
 
-    if (!authData?.data?.email) sendError.unauthorizationError();
+    if (data?.email) sendError.unauthorizationError();
 
-    const userData = await this.service.findUserByEmail(authData?.data?.email);
+    const userData = await this.service.findUserByEmail(data?.email);
 
     const { token, name, email, code } = createVericationToken(userData);
 
@@ -200,13 +200,13 @@ class AuthController {
   public resetPassword = async (req: CustomRequest, res: Response) => {
     const payload = req.body;
 
-    const authData = verifyAuthorization(req);
-    if (authData?.error) sendError.unauthorizationError(authData.error);
+    const { error, data } = verifyAuthorization(req);
+    if (error) sendError.unauthorizationError(error);
 
-    if (!authData?.data?.userId) sendError.unauthorizationError();
+    if (!data?.userId) sendError.unauthorizationError();
 
     const userData = await this.service.resetPassword({
-      ...authData?.data,
+      ...data,
       ...payload,
     });
 
@@ -231,13 +231,13 @@ class AuthController {
    * @access public
    */
   public resendPasswordResetCode = async (req: CustomRequest, res: Response) => {
-    const authData = verifyAuthorization(req);
+    const { error, data } = verifyAuthorization(req);
 
-    if (authData?.error) sendError.unauthorizationError(authData.error);
+    if (error) sendError.unauthorizationError(error);
 
-    if (!authData?.data?.email) sendError.unauthorizationError();
+    if (!data?.email) sendError.unauthorizationError();
 
-    const userData = await this.service.findUserByEmail(authData?.data?.email);
+    const userData = await this.service.findUserByEmail(data?.email);
 
     const { code, name, email, token } = createVericationToken(userData, TIME_IN.minutes[15]);
 
